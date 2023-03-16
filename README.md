@@ -1,2 +1,2 @@
-# organo
+# Organo
 Projeto em React
