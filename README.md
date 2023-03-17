@@ -1,2 +1,10 @@
 # Organo
-Projeto em React
+
+Aplicação de cadastro de colaboradores de empresa
+
+#Tecnologias:
+
+HTML
+CSS
+JAVASCRIPT
+REACT JS
