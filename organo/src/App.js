@@ -109,16 +109,22 @@ function mudarCorDoTime(cor, id){
   }))
 }
 
+function cadastrarTime(novoTime) {
+  console.log(novoTime)
+  setTimes([...times, {...novoTime, id: uuidv4()} ])
+}
+
   return (
     <div className="App">
       <Banner />
       <Formulario  
         time={times.map(time => time.nome)}
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} 
+        cadastrarTime = {cadastrarTime}
       />
-      {times.map(time => 
+      {times.map((time, index) => 
         <Time 
-          key={time.id} 
+          key={index} 
           time={time} 
           colaboradores = {colaboradores.filter(colaborador => colaborador.time === time.nome)}
           aoDeletar={deletarColaborador}
