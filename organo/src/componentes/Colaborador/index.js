@@ -6,6 +6,9 @@ import { useState } from 'react';
 const Colaborador = ({corDeFundo, aoDeletar, colaborador, aoFavoritar}) => {
 
     function favoritar() {
+        if (colaborador.favorito === true){
+            setTimeout(diminuirIcone, 0.5)
+        }
         aoFavoritar(colaborador.id)
     }    
 
@@ -46,7 +49,7 @@ const Colaborador = ({corDeFundo, aoDeletar, colaborador, aoFavoritar}) => {
                             className='fav' 
                             onMouseOver={aumentarIcone} 
                             onMouseOut={diminuirIcone}
-
+    
                         />
                     }
                 </div>
