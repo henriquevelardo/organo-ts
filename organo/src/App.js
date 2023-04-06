@@ -51,21 +51,8 @@ function App() {
 
   const inicial = [
     { 
-      id:uuidv4(),
-      nome: 'HENRIQUE VELARDO',
-      cargo: 'Desenvolvedor Front-End Jr.',
-      imagem: 'https://github.com/henriquevelardo.png',
-      time: times[1].nome
-    },
-    { 
-      id:uuidv4(),
-      nome: 'HENRIQUE VELARDO',
-      cargo: 'Desenvolvedor Front-End Jr.',
-      imagem: 'https://github.com/henriquevelardo.png',
-      time: times[1].nome
-    },
-    { 
-      id:uuidv4(),
+      id: uuidv4(),
+      favorito: false, 
       nome: 'HENRIQUE VELARDO',
       cargo: 'Desenvolvedor Front-End Jr.',
       imagem: 'https://github.com/henriquevelardo.png',
@@ -73,6 +60,23 @@ function App() {
     },
     { 
       id: uuidv4(),
+      favorito: false, 
+      nome: 'HENRIQUE VELARDO',
+      cargo: 'Desenvolvedor Front-End Jr.',
+      imagem: 'https://github.com/henriquevelardo.png',
+      time: times[1].nome
+    },
+    { 
+      id: uuidv4(),
+      favorito: false, 
+      nome: 'HENRIQUE VELARDO',
+      cargo: 'Desenvolvedor Front-End Jr.',
+      imagem: 'https://github.com/henriquevelardo.png',
+      time: times[1].nome
+    },
+    { 
+      id: uuidv4(),
+      favorito: false, 
       nome: 'HENRIQUE VELARDO',
       cargo: 'Desenvolvedor Front-End Jr.',
       imagem: 'https://github.com/henriquevelardo.png',
@@ -80,6 +84,7 @@ function App() {
     },
     { 
       id: uuidv4(),
+      favorito: false, 
       nome: 'HENRIQUE VELARDO',
       cargo: 'Desenvolvedor Front-End Jr.',
       imagem: 'https://github.com/henriquevelardo.png',
@@ -87,6 +92,7 @@ function App() {
     },
     { 
       id: uuidv4(),
+      favorito: false, 
       nome: 'HENRIQUE VELARDO',
       cargo: 'Desenvolvedor Front-End Jr.',
       imagem: 'https://github.com/henriquevelardo.png',
@@ -110,8 +116,16 @@ function mudarCorDoTime(cor, id){
 }
 
 function cadastrarTime(novoTime) {
-  console.log(novoTime)
   setTimes([...times, {...novoTime, id: uuidv4()} ])
+}
+
+function resolverFavorito(id) {
+  setColaboradores(colaboradores.map(colaborador => {
+    if(colaborador.id === id) colaborador.favorito = !colaborador.favorito;
+    return colaborador;
+  }))
+
+
 }
 
   return (
@@ -129,6 +143,7 @@ function cadastrarTime(novoTime) {
           colaboradores = {colaboradores.filter(colaborador => colaborador.time === time.nome)}
           aoDeletar={deletarColaborador}
           mudarCor={mudarCorDoTime}
+          aoFavoritar={resolverFavorito}
         />
       )}
       <Rodape />

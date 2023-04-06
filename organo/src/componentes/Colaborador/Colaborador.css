@@ -44,3 +44,8 @@
     top: -10px;
 }
 
+
+.fav {
+    margin: -10px;
+    transition: .2s;
+}
