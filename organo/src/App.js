@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Banner from './componentes/Banner/Banner';
+import Banner from './componentes/Banner'
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 import Rodape from './componentes/Rodape';
@@ -130,7 +130,7 @@ function resolverFavorito(id) {
 
   return (
     <div className="App">
-      <Banner />
+      <Banner enderecoImagem='/imagens/banner.png'/>
       <Formulario  
         time={times.map(time => time.nome)}
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} 
