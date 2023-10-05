@@ -2,14 +2,12 @@ import { useState } from 'react';
 import Banner from './componentes/Banner'
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
-import Rodape from './componentes/Rodape';
+import Rodape from './componentes/Rodape'
 import { v4 as uuidv4 } from 'uuid';
+import { IColaborador } from './compartilhado/interface/IColaborador';
+import { ITime } from './compartilhado/interface/ITime';
 
 function App() {
-
-  const aoNovoColaboradorAdicionado = (colaborador) => {
-      setColaboradores([...colaboradores, colaborador])
-  }
 
   const [times, setTimes] = useState([
     {
@@ -49,6 +47,7 @@ function App() {
     }
   ])
 
+
   const inicial = [
     { 
       id: uuidv4(),
@@ -57,56 +56,22 @@ function App() {
       cargo: 'Desenvolvedor Front-End Jr.',
       imagem: 'https://github.com/henriquevelardo.png',
       time: times[1].nome
-    },
-    { 
-      id: uuidv4(),
-      favorito: false, 
-      nome: 'HENRIQUE VELARDO',
-      cargo: 'Desenvolvedor Front-End Jr.',
-      imagem: 'https://github.com/henriquevelardo.png',
-      time: times[1].nome
-    },
-    { 
-      id: uuidv4(),
-      favorito: false, 
-      nome: 'HENRIQUE VELARDO',
-      cargo: 'Desenvolvedor Front-End Jr.',
-      imagem: 'https://github.com/henriquevelardo.png',
-      time: times[1].nome
-    },
-    { 
-      id: uuidv4(),
-      favorito: false, 
-      nome: 'HENRIQUE VELARDO',
-      cargo: 'Desenvolvedor Front-End Jr.',
-      imagem: 'https://github.com/henriquevelardo.png',
-      time: times[2].nome
-    },
-    { 
-      id: uuidv4(),
-      favorito: false, 
-      nome: 'HENRIQUE VELARDO',
-      cargo: 'Desenvolvedor Front-End Jr.',
-      imagem: 'https://github.com/henriquevelardo.png',
-      time: times[2].nome
-    },
-    { 
-      id: uuidv4(),
-      favorito: false, 
-      nome: 'HENRIQUE VELARDO',
-      cargo: 'Desenvolvedor Front-End Jr.',
-      imagem: 'https://github.com/henriquevelardo.png',
-      time: times[2].nome
     }
   ]
 
-  const [colaboradores, setColaboradores] = useState(inicial)
+  const [colaboradores, setColaboradores] = useState<IColaborador[]>(inicial)
 
-function deletarColaborador(id){
+  const aoNovoColaboradorAdicionado = (colaborador: IColaborador) => {
+      setColaboradores([...colaboradores, colaborador])
+  }
+
+  
+
+function deletarColaborador(id: any){
   setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
 }
 
-function mudarCorDoTime(cor, id){
+function mudarCorDoTime(cor: string, id: string){
   setTimes(times.map(time => {
     if(time.id === id){
       time.cor = cor;
@@ -115,11 +80,11 @@ function mudarCorDoTime(cor, id){
   }))
 }
 
-function cadastrarTime(novoTime) {
+function cadastrarTime(novoTime: ITime) {
   setTimes([...times, {...novoTime, id: uuidv4()} ])
 }
 
-function resolverFavorito(id) {
+function resolverFavorito(id: any) {
   setColaboradores(colaboradores.map(colaborador => {
     if(colaborador.id === id) colaborador.favorito = !colaborador.favorito;
     return colaborador;
@@ -132,7 +97,7 @@ function resolverFavorito(id) {
     <div className="App">
       <Banner enderecoImagem='/imagens/banner.png'/>
       <Formulario  
-        time={times.map(time => time.nome)}
+        times={times.map(time => time.nome)}
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} 
         cadastrarTime = {cadastrarTime}
       />

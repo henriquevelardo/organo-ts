@@ -1,8 +1,18 @@
 import './Time.css';
-import Colaborador from '../Colaborador';
 import hexToRgba from 'hex-to-rgba';
+import { IColaborador } from '../../compartilhado/interface/IColaborador';
+import { ITime } from '../../compartilhado/interface/ITime';
+import Colaborador from '../Colaborador';
 
-const Time = ({colaboradores, aoDeletar, mudarCor, time, aoFavoritar}) => {
+interface TimeProps {
+    time: ITime, 
+    colaboradores: IColaborador [],
+    aoDeletar: React.MouseEventHandler<SVGElement>,
+    aoFavoritar:React.MouseEventHandler<SVGElement>,
+    mudarCor: any, 
+}
+
+const Time = ({colaboradores, aoDeletar, mudarCor, time, aoFavoritar}: TimeProps) => {
 
     const css = { backgroundColor: hexToRgba(time.cor, '0.6' ), backgroundImage: 'url(/imagens/fundo.png)'}
 
@@ -21,7 +31,7 @@ const Time = ({colaboradores, aoDeletar, mudarCor, time, aoFavoritar}) => {
                     />)}
                 </div>
         </section>
-        : ''
+        : <></>
         
     )
 }

@@ -1,9 +1,17 @@
 import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import './Colaborador.css';
 import { useState } from 'react';
+import { IColaborador } from '../../compartilhado/interface/IColaborador';
 
 
-const Colaborador = ({corDeFundo, aoDeletar, colaborador, aoFavoritar}) => {
+interface ColaboradorProps {
+    corDeFundo: string, 
+    aoDeletar: React.MouseEventHandler<SVGElement>, 
+    colaborador: IColaborador,
+    aoFavoritar: React.MouseEventHandler<SVGElement>, 
+}
+
+const Colaborador = ({corDeFundo, aoDeletar, colaborador, aoFavoritar}: ColaboradorProps) => {
 
     function favoritar() {
         if (colaborador.favorito === true){
@@ -12,19 +20,16 @@ const Colaborador = ({corDeFundo, aoDeletar, colaborador, aoFavoritar}) => {
         aoFavoritar(colaborador.id)
     }    
 
-    const [propsFavoritar, setPropsFavoritar] = useState( {
-        size: 25,
-        onClick: favoritar
-    })
+    const [propsFavoritar, setPropsFavoritar] = useState( {size: 25, onClick: favoritar})
 
     function aumentarIcone() {
         propsFavoritar.size = 35
-        setPropsFavoritar({...propsFavoritar}, propsFavoritar)   
+        setPropsFavoritar({...propsFavoritar})   
     }
 
     function diminuirIcone() {
         propsFavoritar.size = 25;
-        setPropsFavoritar({...propsFavoritar}, propsFavoritar)
+        setPropsFavoritar({...propsFavoritar})
     }
 
 

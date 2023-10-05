@@ -1,13 +1,22 @@
+import React from 'react';
 import Campo from '../Campo'
 import ListaSuspensa from '../ListaSuspensa';
 import Botao from '../Botao';
 import './formulario.css'
 import { useState } from 'react';
+import { IColaborador } from '../../compartilhado/interface/IColaborador';
+import { ITime } from '../../compartilhado/interface/ITime';
 
-const Formulario = (props) => {
+interface FormularioProps{
+    aoColaboradorCadastrado: (colaborador: IColaborador) => void
+    cadastrarTime: (time: ITime) => void
+    times: string[]
+}
+
+const Formulario = (props: FormularioProps) => {
 
 
-    const aoSalvar = (event) => {
+    const aoSalvar = (event: React.FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
 
         props.aoColaboradorCadastrado({
@@ -61,12 +70,12 @@ const Formulario = (props) => {
                 />
                 <ListaSuspensa
                     obrigatorio={true}
-                    itens={props.time}
+                    itens={props.times}
                     label="Time"
                     valor={time}
                     aoAlterado={time => setTime(time)}
                 />
-                <Botao >
+                <Botao>
                     Cria Card
                 </Botao>
             </form>
