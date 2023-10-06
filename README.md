@@ -1,10 +1,10 @@
 # Organo
 
-Aplicação de cadastro de colaboradores de empresa
+Aplicação de cadastro de colaboradores de empresa versão migrada para TypeScript
 
 #Tecnologias:
 
 HTML
 CSS
-JAVASCRIPT
-REACT JS
+TYPESCRIPT
+REACT TSX
