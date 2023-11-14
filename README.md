@@ -2,7 +2,7 @@
 
 Aplicação de cadastro de colaboradores de empresa versão migrada para TypeScript
 
-#Tecnologias:
+# Tecnologias:
 
 HTML
 CSS
